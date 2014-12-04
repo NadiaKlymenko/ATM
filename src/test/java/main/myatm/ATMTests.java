@@ -24,7 +24,6 @@ public class ATMTests {
         double actionMoney = 42;
         ATM atm = new ATM(actionMoney);
         double expectedResult = 42;
-        System.out.println("hui");
         assertEquals(atm.getMoneyInATM(), expectedResult, 0.0);
     }
 
