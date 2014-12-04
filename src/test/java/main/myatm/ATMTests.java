@@ -59,7 +59,6 @@ public class ATMTests {
     @Test (expected = NoCardExeption.class)
     public void testCheckBalanceCardIsNullThrownNoCardInsertion() throws NoCardExeption{
         ATM atm = new ATM(42);
-        System.out.println("Вышла черепаха");
         atm.checkBalance();
 
     }
