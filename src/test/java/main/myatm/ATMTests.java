@@ -52,7 +52,6 @@ public class ATMTests {
         when(card.isBlocked()).thenReturn(false);
         when(card.checkPin(pinCode)).thenReturn(true);
         boolean result = atm.validateCard(card,pinCode);
-
         assertTrue(result);
     }
 
@@ -60,7 +59,7 @@ public class ATMTests {
     @Test (expected = NoCardExeption.class)
     public void testCheckBalanceCardIsNullThrownNoCardInsertion() throws NoCardExeption{
         ATM atm = new ATM(42);
-
+        System.out.println("Вышла черепаха");
         atm.checkBalance();
 
     }
