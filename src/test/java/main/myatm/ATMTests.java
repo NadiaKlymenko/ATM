@@ -15,14 +15,22 @@ import static org.mockito.Mockito.*;
 public class ATMTests {
     @Test(expected = IllegalArgumentException.class)
     public void testSetNegativeMoneyInATMThrownIllegalArgumentException()  {
-        new ATM(-42);
+        new ATM(0);
+
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testSetNullIllegalArgumentException()  {
+        new ATM(-21);
+
+    }
+
 
 
     @Test
     public void testGetMoneyInATMExpectedEquals() {
-        double actionMoney = 42;
-        ATM atm = new ATM(actionMoney);
+        //double actionMoney = 42;
+        ATM atm = new ATM(42);
         double expectedResult = 42;
         assertEquals(atm.getMoneyInATM(), expectedResult, 0.0);
     }
@@ -164,7 +172,22 @@ public class ATMTests {
 
     }
 
+    @Test
+    public void testGetCashAllOk() throws NoCardExeption, NotEnoughMoneyInATMExeption, NotEnoughMoneyOnCardException{
 
+        double amount =1000;
+        ATM atm = new ATM(1000);
 
+        Card card = mock(Card.class);
+        int pinCode = 1111;
+        Account account = mock(Account.class);
+        double actualValue = 1000;
+        when(account.getBalance()).thenReturn(actualValue);
+        when(card.getAccount()).thenReturn(account);
+        when(card.isBlocked()).thenReturn(false);
+        when(card.checkPin(pinCode)).thenReturn(true);
+        atm.validateCard(card,pinCode);
+        atm.getCash(amount);
+    }
 
 }

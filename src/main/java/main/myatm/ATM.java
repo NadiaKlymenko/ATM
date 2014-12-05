@@ -6,7 +6,7 @@ public class ATM {
 
     //Можно задавать количество денег в банкомате 
     public ATM(double moneyInATM) {
-        if (moneyInATM < 0) {
+        if (moneyInATM <= 0) {
             throw new IllegalArgumentException();
         }
         this.moneyInATM = moneyInATM;
